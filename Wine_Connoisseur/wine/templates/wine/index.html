@@ -1,0 +1,285 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<style type="text/css">
+
+		html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.jumbotron {
+  background-image: url("{% static "wine/images/img2.jpeg" %}");
+  background-size: 100% 100%;
+  color: #b0bec5;
+  margin-bottom: 0;
+}
+.navbar-scroll {
+  background-color: rgba(0,123,255,0.4);
+  transition: background-color 0.5s;
+}
+@media(max-width: 768px){
+    .navbar {background-color: #007bff !important; }
+}
+/* ============================================================
+  PRIMARY STRUCTURE
+============================================================ */
+.parallax-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+  SECTIONS
+============================================================ */
+section.module:last-child {
+  margin-bottom: 0;
+}
+section.module h2 {
+  margin-bottom: 40px;
+  font-family: "Roboto Slab", serif;
+  font-size: 30px;
+}
+section.module p {
+  margin-bottom: 40px;
+  font-size: 16px;
+  font-weight: 300;
+}
+section.module p:last-child {
+  margin-bottom: 0;
+}
+section.module.content {
+  padding: 40px 0;
+  background-color: rgba(207,216,220,0.5);
+}
+section.module.content:last-child {
+  margin-bottom: 60px;
+}
+section.module.parallax {
+  padding: 240px 0;
+  background-position: 0 0;
+}
+section.module.parallax h1 {
+  color: #1e1e1e;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px white;
+}
+section.module.parallax-1 {
+  background-image: url("{% static "wine/images/img3.jpg" %}");
+  background-position: 50% 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgba(0,123,255,0.4);
+  background-blend-mode: screen;
+}
+section.module.parallax-2 {
+  background-image: url("{% static "wine/images/img4.jpg" %}");
+  background-position: 50% 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgba(0,123,255,0.4);
+  background-blend-mode: screen;
+}
+section.module.parallax-3 {
+  background-image: url("{% static "wine/images/img1.jpg" %}");
+  background-position: 50% 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgba(0,123,255,0.4);
+  background-blend-mode: screen;
+}
+
+@media all and (min-width: 600px) {
+  section.module h2 {
+    font-size: 42px;
+  }
+  section.module p {
+    font-size: 20px;
+  }
+  section.module.parallax {
+    padding: 300px 0;
+  }
+  section.module.parallax h1 {
+    font-size: 96px;
+  }
+}
+@media all and (min-width: 960px) {
+  section.module.parallax h1 {
+    font-size: 160px;
+  }
+}
+/*footer*/
+.footer .container-fluid {
+  height: auto;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+}
+footer .container-fluid a {
+  display: inline-block;
+  color: #ddd;
+  padding-left: 1em;
+
+}
+footer .container-fluid p {
+  display: inline-block;
+  color: #ddd;
+  padding-left: 1em;
+  padding-right: 2em;
+}
+@media(max-width: 768px){
+    .col-md-4 {
+      text-align: center;
+      line-height: 30px;
+  }
+}
+.right {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+
+}
+h2{
+  font-size:2.2em;
+  margin-left:300px;
+}
+
+	</style>
+
+</head>
+	<body>
+
+		<nav class="navbar navbar-expand-md navbar-dark bg-fade fixed-top">
+
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	        <ul class="navbar-nav mr-auto">
+	          <li class="nav-item active">
+	            <a class="nav-link" href="../">Home <span class="sr-only">(current)</span></a>
+	          </li>
+            {% if user.is_authenticated %}
+
+            <li class="nav-item">
+               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              </li>
+			  <li class="nav-item">
+               <a class="nav-link" href="{% url 'filter' %}">Filters</a>
+              </li>
+              {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="../login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../register">Register</a>
+            </li>
+            {% endif %}
+
+	        </ul>
+	      </div>
+    </nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Wine App</h1>
+    <p class="lead">This is a our home page.</p>
+  </div>
+</div>
+<section class="module parallax parallax-1" data-type="background" data-speed="10">
+  <div class="parallax-container">
+
+  </div>
+</section>
+
+
+<section class="module parallax parallax-2" data-type="background" data-speed="10">
+  <div class="parallax-container">
+    <h2>WINE CONNOISSEUR</h2>
+  </div>
+</section>
+
+
+
+<section class="module parallax parallax-3" data-type="background" data-speed="10">
+  <div class="parallax-container">
+    <h1>ANURAG</h1>
+  </div>
+</section>
+
+
+  
+
+	<script type="text/javascript">
+
+		//parallax js
+$(document).ready(function(){
+  var $window = $(window);
+    $('section[data-type="background"]').each(function(){
+        var $bgobj = $(this); // assigning the object
+
+        $(window).scroll(function() {
+            var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+
+            // Put together our final background position
+            var coords = '50% '+ yPos + 'px';
+
+            // Move the background
+            $bgobj.css({ backgroundPosition: coords });
+        });
+    });
+});
+
+//menu transition js
+$(document).ready(function(){
+  $(window).scroll(function(){
+  	var scroll = $(window).scrollTop();
+    	  if (scroll > 0) {
+	    $(".navbar").addClass("navbar-scroll");
+        }
+    	  else{
+		  $(".navbar").removeClass("navbar-scroll");
+	  }
+	  if (scroll > 200) {
+	    $(".navbar").addClass("bg-primary");
+	  }
+
+	  else{
+		  $(".navbar").removeClass("bg-primary");
+	  }
+  })
+})
+
+
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	</body>
+</html>
